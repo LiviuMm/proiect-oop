@@ -1,31 +1,32 @@
 #ifndef ELEV_H
 #define ELEV_H
 
-#include "Persoana.h"
+#include "persoana.h"
+#include "nota.h"
+#include <vector>
 #include <string>
 #include <iostream>
 
+namespace Proiect_Scoala {
+
 class Elev : public Persoana {
 private:
-    std::string clasa;
-    double medie;
+    std::string m_clasa;
+    std::vector<Nota> m_note;
 
 public:
-    // Constructor
-    Elev(const std::string& nume, const std::string& cnp, int varsta, const std::string& clasa, double medie);
-
-    // Destructor
+    Elev(const std::string& nume, const std::string& cnp, int varsta, const std::string& clasa);
     ~Elev();
 
-    // Getteri
-    std::string getClasa() const;
-    double getMedie() const;
+    std::string GetClasa() const;
+    void AdaugaNota(const Nota& nota);
+    void AfiseazaNote() const;
 
-    // Suprascriere functie afisare
-    void afiseaza() const override;
+    void Afiseaza() const override;
 
-    // Supraincarcare operator <<
-    friend std::ostream& operator<<(std::ostream& os, const Elev& e);
+    friend std::ostream& operator<<(std::ostream& os, const Elev& elev);
 };
+
+} // namespace Proiect_Scoala
 
 #endif

@@ -1,29 +1,31 @@
-#include "Profesor.h"
+#include "profesor.h"
 
-//Constructor 
-Profesor::Profesor(const std::string& nume, const std::string& cnp, int varsta, const std::string& materie, const std::string& clasa_diriginte)
-    : Persoana(nume, cnp, varsta), materie(materie), clasa_diriginte(clasa_diriginte) {}
+namespace Proiect_Scoala {
 
-//Destructor 
+Profesor::Profesor(const std::string& nume, const std::string& cnp, int varsta,
+                   const std::string& materie, const std::string& clasa_diriginte)
+    : Persoana(nume, cnp, varsta), m_materie(materie), m_clasa_diriginte(clasa_diriginte) {}
+
 Profesor::~Profesor() {}
 
-//Getteri
-std::string Profesor::getMaterie() const{
-    return materie;
-}
-std::string Profesor::getClasa_diriginte() const{
-    return clasa_diriginte;
-}
-// Suprascriere functia afiseaza
-void Profesor::afiseaza() const{
-    Persoana::afiseaza();
-    std::cout<< ", Materia predata: " <<materie << ", Clasa la care este diriginte: "<< clasa_diriginte<< "\n";
+std::string Profesor::GetMaterie() const {
+    return m_materie;
 }
 
-//Supraincarcare operator << 
-std::ostream& operator<<(std::ostream& os, const Profesor& prof) {
-    os << static_cast<const Persoana&>(prof)  // Afișează partea de Persoana
-    << ", Materia predata: " << prof.materie
-    << ", Clasa la care este diriginte: " << prof.clasa_diriginte;
- return os;
+std::string Profesor::GetClasaDiriginte() const {
+    return m_clasa_diriginte;
 }
+
+void Profesor::Afiseaza() const {
+    Persoana::Afiseaza();
+    std::cout << ", Materie: " << m_materie << ", Diriginte la: " << m_clasa_diriginte << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const Profesor& profesor) {
+    os << static_cast<const Persoana&>(profesor)
+       << ", Materie: " << profesor.m_materie
+       << ", Diriginte la: " << profesor.m_clasa_diriginte;
+    return os;
+}
+
+} 

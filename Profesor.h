@@ -1,32 +1,30 @@
 #ifndef PROFESOR_H
 #define PROFESOR_H
 
-#include "Persoana.h"
+#include "persoana.h"
 #include <string>
 #include <iostream>
 
+namespace Proiect_Scoala {
+
 class Profesor : public Persoana {
-    private:
-    std::string materie;
-    std::string clasa_diriginte;
+private:
+    std::string m_materie;
+    std::string m_clasa_diriginte;
 
-    public:
-    //Constructor 
-    Profesor(const std::string& nume, const std::string& cnp, int varsta, const std::string& materie, const std::string& clasa_diriginte);
-
-    //Destructor
+public:
+    Profesor(const std::string& nume, const std::string& cnp, int varsta,
+             const std::string& materie, const std::string& clasa_diriginte);
     ~Profesor();
 
-    //Getteri
-    std::string getMaterie() const;
-    std::string getClasa_diriginte() const;
+    std::string GetMaterie() const;
+    std::string GetClasaDiriginte() const;
 
-    // Suprascriere functie afisare
-    void afiseaza() const override;
+    void Afiseaza() const override;
 
-    //Supraincarcare orperator << 
-    friend std::ostream& operator<<(std::ostream& os, const Profesor& prof);
-
+    friend std::ostream& operator<<(std::ostream& os, const Profesor& profesor);
 };
+
+} 
 
 #endif

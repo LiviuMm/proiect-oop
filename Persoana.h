@@ -4,29 +4,29 @@
 #include <string>
 #include <iostream>
 
+namespace Proiect_Scoala {
+
 class Persoana {
 protected:
-    std::string nume;
-    std::string cnp;
-    int varsta;
+    std::string m_nume;
+    std::string m_cnp;
+    int m_varsta;
 
 public:
-    // Constructor
-    Persoana(const std::string& nume, const std::string& cnp, int varsta);
-
-    // Destructor
+    Persoana(const std::string& nume = "", const std::string& cnp = "", int varsta = 0);
     virtual ~Persoana();
 
-    // Getteri
-    std::string getNume() const;
-    std::string getCNP() const;
-    int getVarsta() const;
+    std::string GetNume() const;
+    std::string GetCNP() const;
+    int GetVarsta() const;
 
-    // Functie virtuala pentru afisare
-    virtual void afiseaza() const;
+    void SetVarsta(int varsta);
 
-    // Supraincarcare operator <<
-    friend std::ostream& operator<<(std::ostream& os, const Persoana& p);
+    virtual void Afiseaza() const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Persoana& persoana);
 };
+
+} 
 
 #endif
